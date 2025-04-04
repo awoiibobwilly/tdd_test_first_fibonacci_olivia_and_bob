@@ -2,12 +2,18 @@ import unittest
 
 
 def fibonacci(first, second, length):
+    if first < 0 or second < 0 or length < 0:
+        raise ValueError("Error: Fibonacci sequence is not defined for negative numbers.")
+
     if length == 0:
         return [first]
+
     sequence = [first]  # Start with the first value
     sequence += fibonacci(second, first + second, length - 1)  # Recursively append
     return sequence  # Return the list instead of printing
 
+
+# print((fibonacci(2, 3, 0)))
 
 class TestFibonacci(unittest.TestCase):
     def test_valid_fibonacci(self):
